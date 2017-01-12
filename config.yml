@@ -1,0 +1,5 @@
+useProxy: false
+remoteHost: 9.9.9.9
+remotePort: 18800
+proxyHost: 9.9.9.9
+proxyPort: 8080
