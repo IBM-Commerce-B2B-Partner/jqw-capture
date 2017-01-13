@@ -22,5 +22,8 @@ public class ConfigTest {
 		}
 		Assert.assertEquals(false, c.isUseProxy());
 		Assert.assertEquals("9.9.9.9", c.getRemoteHost());
+		Assert.assertEquals(18800, c.getRemotePort());
+		Assert.assertEquals("9.9.9.9", c.getProxyHost());
+		Assert.assertEquals(8080, c.getProxyPort());
 	}
 }

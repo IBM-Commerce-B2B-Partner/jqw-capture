@@ -1,28 +1,22 @@
 
 package com.ibm.de.duedorf.wscs.qwcapture;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URI;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
-import org.apache.http.cookie.Cookie;
 import org.apache.http.impl.client.BasicCookieStore;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
@@ -34,10 +28,16 @@ public class Capture {
 	public static final String CONFIG_FILE = "config.yml";
 	public Configuration config = null;
 
+	/**
+	 * Reads the YAML config from the filesystem
+	 * @param configFile
+	 * @return
+	 * @throws IOException
+	 */
 	public Configuration readConfig(String configFile) throws IOException {
 		ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
 		Configuration config = null;
-		config = mapper.readValue(new File(configFile), Configuration.class);
+		config = mapper.readValue( Thread.currentThread().getContextClassLoader().getResource(CONFIG_FILE), Configuration.class);
 		return config;
 	}
 

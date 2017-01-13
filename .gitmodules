@@ -1,0 +1,3 @@
+[submodule "qw-xslt-transformations"]
+	path = qw-xslt-transformations
+	url = git@github.com:IBM-Commerce-B2B-Partner/qw-xslt-transformations.git
