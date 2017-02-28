@@ -1,5 +1,27 @@
-useProxy: false
-remoteHost: 9.9.9.9
-remotePort: 18800
-proxyHost: 9.9.9.9
-proxyPort: 8080
+hostInfo:
+  - nodeName: node1
+    hostname: 9.155.214.233
+    port: 18800
+    usesSSL: false
+    certName: ca1
+    useProxy: false
+    proxyHost: 192.168.75.130
+    proxyPort: 8080
+    user: admin
+    pass: password
+    inuse: true
+    
+  - nodeName: node2  
+    hostname: "8.8.8.8"
+    port: 432
+    usesSSL: true 
+    certName: ca2
+    useProxy: false
+    proxyHost: 9.9.9.9
+    proxyPort: 8080
+    user: admin
+    pass: password
+    inuse: false
+    
+     
+    

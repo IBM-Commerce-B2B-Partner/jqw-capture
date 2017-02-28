@@ -11,19 +11,26 @@ public class ConfigTest {
 
 	@Test
 	public void testConfig() {
-		Capture ca = new Capture();
-		
 		Configuration c =null;
 		try {
-			 c = ca.readConfig(Capture.CONFIG_FILE);
+			 c =Configuration.getInstance();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Assert.assertEquals(false, c.isUseProxy());
-		Assert.assertEquals("9.9.9.9", c.getRemoteHost());
-		Assert.assertEquals(18800, c.getRemotePort());
-		Assert.assertEquals("9.9.9.9", c.getProxyHost());
-		Assert.assertEquals(8080, c.getProxyPort());
+	
+
+		HostInfo h = c.getHostInfo().get(0);
+		Assert.assertEquals(12345, h.getPort());
+		Assert.assertEquals("node1", h.getNodeName());
+		Assert.assertEquals(false, h.isUsesSSL());
+		Assert.assertEquals("ca1", h.getCertName());
+		Assert.assertEquals(false, h.isUseProxy());
+		Assert.assertEquals("9.9.9.9", h.getProxyHost());
+		Assert.assertEquals(8080, h.getProxyPort());
+		Assert.assertEquals("admin", h.getUser());
+		Assert.assertEquals("password", h.getPass());
+		
+		h = c.getHostInfo().get(1);
+		Assert.assertEquals(432, h.getPort());
 	}
 }
